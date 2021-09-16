@@ -1,11 +1,11 @@
 Package: fortranfctpassing
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
+Title: Playing around with the interaction of Fortran and Rcpp. 
 Version: 1.0
 Date: 2021-09-16
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: One paragraph description of what the package does as one or more full sentences.
+Author: Konrad Krämer
+Maintainer: <konrad_kraemer@yahoo.de>
+Description: Showing the possibility to pass Rcpp fct to fortran and vice versa. It is also possible to pass a fortran fct (e.g.from user) to Rcpp which afterwards can be passed to fortran. This is done using an external pointer and the C interface of fortran.
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.7)
 LinkingTo: Rcpp
