@@ -1,0 +1,21 @@
+MODULE interface
+
+	use ISO_C_BINDING, only : C_CHAR, C_INT, C_FLOAT, C_DOUBLE, C_PTR
+	IMPLICIT NONE
+
+	INTERFACE
+	  SUBROUTINE hello() BIND(C, name ='Rfct')
+	  END SUBROUTINE hello
+	END INTERFACE
+END MODULE
+
+
+SUBROUTINE TEST3()
+	
+	use interface
+        IMPLICIT NONE
+		
+	call hello()
+
+
+END SUBROUTINE

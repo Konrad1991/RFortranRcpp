@@ -11,6 +11,34 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// Rfct
+void Rfct(SEXP fct);
+RcppExport SEXP _fortranfctpassing_Rfct(SEXP fctSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type fct(fctSEXP);
+    Rfct(fct);
+    return R_NilValue;
+END_RCPP
+}
+// Rfct2
+void Rfct2();
+RcppExport SEXP _fortranfctpassing_Rfct2() {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rfct2();
+    return R_NilValue;
+END_RCPP
+}
+// call_fortran_which_callsR
+void call_fortran_which_callsR();
+RcppExport SEXP _fortranfctpassing_call_fortran_which_callsR() {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    call_fortran_which_callsR();
+    return R_NilValue;
+END_RCPP
+}
 // call
 void call();
 RcppExport SEXP _fortranfctpassing_call() {
@@ -50,6 +78,9 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_fortranfctpassing_Rfct", (DL_FUNC) &_fortranfctpassing_Rfct, 1},
+    {"_fortranfctpassing_Rfct2", (DL_FUNC) &_fortranfctpassing_Rfct2, 0},
+    {"_fortranfctpassing_call_fortran_which_callsR", (DL_FUNC) &_fortranfctpassing_call_fortran_which_callsR, 0},
     {"_fortranfctpassing_call", (DL_FUNC) &_fortranfctpassing_call, 0},
     {"_fortranfctpassing_test_get_fortran", (DL_FUNC) &_fortranfctpassing_test_get_fortran, 0},
     {"_fortranfctpassing_call2", (DL_FUNC) &_fortranfctpassing_call2, 0},

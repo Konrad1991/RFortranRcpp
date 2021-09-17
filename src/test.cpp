@@ -1,8 +1,5 @@
  #include <Rcpp.h>
 
-#include <vector>
-#include <functional>
-
 typedef void (*fp)();
 
 // c interface to fortran fct
