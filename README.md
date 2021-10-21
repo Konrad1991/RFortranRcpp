@@ -80,8 +80,68 @@ void call_fortran_which_call_fortran_via_c() {
 }
 ```
 
-```R
+```r
 library(fortranfctpassing)
 call_fortran_which_call_fortran_via_c()
 ```
 
+
+
+# Call R from Fortran
+
+```C++
+#include <Rcpp.h>
+
+// [[Rcpp::export]]
+void Rfct2() {
+  // Has to be in function if the function is not defined in a package
+  Rcpp::Environment global = Rcpp::Environment::global_env();
+  Rcpp::Function hello = global.get("hello");
+  hello();
+}
+
+// this is called by fortran later
+extern "C" {
+  void Rfctinput_() {
+    Rfct2();
+  }
+}
+
+
+// call fortran which calls R
+extern "C" {
+  void callr_();
+}
+
+
+// [[Rcpp::export]]
+void call_fortran_which_callsR() {
+  callr_();
+}
+```
+
+```Fortran
+SUBROUTINE callr()
+	use ISO_C_BINDING, only : C_DOUBLE, C_PTR
+	IMPLICIT NONE
+
+	INTERFACE
+	  SUBROUTINE Rfct() BIND(C, name ='Rfctinput_')
+	  END SUBROUTINE Rfct
+	END INTERFACE
+	
+	call Rfct()
+
+END SUBROUTINE
+```
+
+
+
+```r
+hello <- function() {
+  print("Hello World")
+}
+
+library(fortranfctpassing)
+call_fortran_which_callsR()
+```

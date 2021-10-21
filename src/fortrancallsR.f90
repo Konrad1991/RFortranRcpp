@@ -1,0 +1,13 @@
+SUBROUTINE callr()
+	use ISO_C_BINDING, only : C_DOUBLE, C_PTR
+	IMPLICIT NONE
+
+	INTERFACE
+	  SUBROUTINE Rfct() BIND(C, name ='Rfctinput_')
+	  END SUBROUTINE Rfct
+	END INTERFACE
+	
+	call Rfct()
+
+END SUBROUTINE
+
