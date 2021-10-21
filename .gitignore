@@ -1,0 +1,7 @@
+$ git status
+$ cat .git/info/exclude
+# ignore objects and archives, anywhere in the tree.
+*.[oa]
+*.so
+*.o
+
