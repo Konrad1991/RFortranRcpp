@@ -7,7 +7,7 @@ Testing communication between fortran, Rcpp and R
  
  It is also possible to pass a R function to fortran.
  
-# How to pass Fortran function to Fortran
+# How to pass a Fortran function to Fortran
 
 * Define a function which should do something
 
